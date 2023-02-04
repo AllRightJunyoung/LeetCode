@@ -8,3 +8,6 @@
 
 # Unique Path(2월 2일)
 - https://docs.google.com/document/u/0/d/1RZIvCqpLA9GRm-_CPm38IVmFOGmk2vqylcjUQ_wolJA/mobilebasic
+
+# Pairs of Songs With Total Durations Divisible by 60 (2월 4일) 다시풀기 다른사람 코드 참고 
+- https://docs.google.com/document/d/15RsMCNYU4zkGxrbB5rmCC8aqENrdnBgwkIR5Elq8ahE/edit

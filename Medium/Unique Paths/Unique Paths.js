@@ -31,8 +31,7 @@ var uniquePaths = function(m, n) {
           
         }
     }
-
-    console.log(dp[m-1][n-1])
+    return dp[m-1][n-1]
 };
 
 uniquePaths(3,7)
