@@ -15,7 +15,9 @@ var spiralOrder = function(matrix) {
    visited[cur_x][cur_y]=true
    answer.push(matrix[cur_x][cur_y])
    let dir=0
+    // row * col 은 정답의 배열개수   
    while(answer.length!==row*col){
+        // 좌표의 범위가 넘거나 , 이미 방문한곳이면 멈추고 방향을 바꿈
         while(true){
         let [nx,ny]=[dx[dir]+cur_x,dy[dir]+cur_y]
         if(nx<0 || ny<0 || nx>=row || ny>=col)break
@@ -26,10 +28,8 @@ var spiralOrder = function(matrix) {
         cur_y=ny
         }
         dir=(dir+1)%4
-    }
-    
+    }   
     return answer
-
 };
 
 spiralOrder([[1,2,3],[4,5,6],[7,8,9]])
