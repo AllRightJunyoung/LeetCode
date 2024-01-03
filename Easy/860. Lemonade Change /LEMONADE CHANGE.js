@@ -6,7 +6,7 @@ var lemonadeChange = function (bills) {
   let obj = { 5: 0, 10: 0 };
   for (let i = 0; i < bills.length; i++) {
     const bill = bills[i];
-    if (bill === 5) {
+    if (bill === 5) { 
       obj[bill] += 1;
     } else if (bill === 10) {
       if (obj[5] > 0) {
