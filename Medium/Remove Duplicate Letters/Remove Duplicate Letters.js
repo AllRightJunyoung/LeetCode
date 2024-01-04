@@ -3,7 +3,7 @@
  * @return {string}
  */
 
-// 주어진 문자열에서 중복 문자를 제거했을때 사전순으로 큰 알파벳을 출력해바라
+// 주어진 문자열에서 중복 문자를 제거했을때 사전순으로 작은 알파벳을 출력해바라
 // sol:
 
 var removeDuplicateLetters = function (s) {

@@ -2,28 +2,25 @@
  * @param {number[]} nums
  * @return {number}
  */
-var rob = function(nums) {
-    let dp=new Array(101).fill(0)
-    let answer=-Infinity
-    dp[0]=nums[0]
 
-    for(let i=0;i<nums.length;i++){
-        if(i===0 || i===1){
-            dp[i]=nums[i]
-        }
-        else if(i===2){
-            dp[i]=dp[i-2]+nums[i]
-        }
-        else{
-            dp[i]=Math.max(dp[i-2]+nums[i],dp[i-3]+nums[i])
-        }
-        answer=Math.max(dp[i],answer)
+// 양 옆은 못함
+var rob = function (nums) {
+  let dp = new Array(nums.length + 1).fill(0);
+  nums.unshift(0);
+  dp[1] = nums[1];
+
+  let answer = dp[1];
+  for (let i = 2; i < nums.length; i++) {
+    dp[i] = dp[i - 2] + nums[i];
+
+    if (i >= 3) {
+      dp[i] = Math.max(dp[i], dp[i - 3] + nums[i]);
     }
-    return answer
-    
+    answer = Math.max(dp[i], answer);
+  }
+  return answer;
 };
+// rob([2, 1, 1, 2]);
 
-rob([2,1,1,2])
-
-rob([1,2,3,1])
-rob([2,7,9,3,1])
+rob([1, 2, 3, 1]);
+rob([2, 7, 9, 3, 1]);
