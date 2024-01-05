@@ -1,0 +1,9 @@
+/**
+ * @param {string} answerKey
+ * @param {number} k
+ * @return {number}
+ */
+var maxConsecutiveAnswers = function (answerKey, k) {};
+
+maxConsecutiveAnswers("TTFF", 2);
+maxConsecutiveAnswers("TFFT", 1);

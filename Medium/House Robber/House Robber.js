@@ -3,7 +3,7 @@
  * @return {number}
  */
 
-// 양 옆은 못함
+// 현재 위치에서 -2 까지 갱신 가능 , 3이상이면 -3까지 가능
 var rob = function (nums) {
   let dp = new Array(nums.length + 1).fill(0);
   nums.unshift(0);
