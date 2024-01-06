@@ -26,7 +26,7 @@ var findAnagrams = function (s, p) {
     } else {
       map.set(s[i], map.get(s[i]) + 1);
     }
-    if (i >= p.length - 1) {
+    if (i >= p.length - 1) { //슬라이딩에 도달하면
       const start = i - (p.length - 1);
       if (checkAnswer(map, p, p_map)) {
         answer.push(start);
