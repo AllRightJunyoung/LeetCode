@@ -32,6 +32,3 @@ function isValid(number,index){
     }
     return false
 }
-
-countArrangement(2)
-countArrangement(1)
