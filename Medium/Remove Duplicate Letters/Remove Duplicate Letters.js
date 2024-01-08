@@ -36,3 +36,5 @@ var removeDuplicateLetters = function (s) {
 
   return answer;
 };
+
+removeDuplicateLetters("bcabc")

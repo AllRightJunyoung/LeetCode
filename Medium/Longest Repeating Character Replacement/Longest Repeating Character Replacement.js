@@ -28,3 +28,4 @@ var characterReplacement = function(s, k) {
     
 };
 
+characterReplacement("AABABBA",1)
