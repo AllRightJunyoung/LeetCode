@@ -17,7 +17,6 @@ var minSubArrayLen = function(target, nums) {
             right+=1
         }
         else{
-
             // 타겟보다 크거나 같은 범위경우 조건에 만족
             answer=Math.min(answer,right-left+1)
             total-=nums[left]
