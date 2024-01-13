@@ -1,41 +1,27 @@
 /**
- * @param {number[]} customers
- * @param {number[]} grumpy
- * @param {number} minutes
+ * @param {number[][]} intervals
  * @return {number}
  */
-var maxSatisfied = function(customers, grumpy, minutes) {
-
+var eraseOverlapIntervals = function(intervals) {
   
-  let left=0
-  let windowMax=0
-  let sum=0
-  // grumpy값이 1일때 가장 큰 windowSize
-  for(let right=0;right<customers.length;right++){
-    if(grumpy[right]===1){
-      sum+=customers[right]
+  // endTime이 작은순으로
+  intervals.sort((a,b)=>a[1]-b[1])
+  let answer=0
+  let [startTime,endTime]=intervals[0]
+
+  for(let i=1;i<intervals.length;i++){
+    if(intervals[i][0]<endTime){
+      answer+=1
     }
-    if(right-left+1===minutes){
-      windowMax=Math.max(windowMax,sum)
-      if(grumpy[left]===1){
-        sum-=customers[left]
-      }
-      left+=1
+    else{
+      endTime=intervals[i][1]
     }
   }
-  // 
-  let total=0
-  for(let i=0;i<customers.length;i++){
-    if(grumpy[i]===0){
-      total+=customers[i]
-    }
-  }
-  let answer=windowMax+total
+  console.log(answer)
   return answer
 };
 
-
-maxSatisfied([3],[1],1)
-
-maxSatisfied([1,0,1,2,1,1,7,5],[0,1,0,1,0,1,0,1],3)
-maxSatisfied([1],[0],1)
+eraseOverlapIntervals([[1,100],[11,22],[1,11],[2,12]])
+// eraseOverlapIntervals([[1,2],[2,3],[3,4],[1,3]])
+// eraseOverlapIntervals([[1,2],[1,2],[1,2]])
+// eraseOverlapIntervals([[1,2],[2,3]])
