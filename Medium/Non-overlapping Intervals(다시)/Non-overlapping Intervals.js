@@ -10,7 +10,7 @@ var eraseOverlapIntervals = function(intervals) {
     let [startTime,endTime]=intervals[0]
   
     for(let i=1;i<intervals.length;i++){
-      // 중복구간
+      // 중복구간일경우 현재 시작하는시간이 끝나는보다 작을경우
       if(intervals[i][0]<endTime){
         answer+=1
       }
