@@ -19,6 +19,7 @@ var rearrangeBarcodes = function(barcodes) {
     }
     let idx=0
     map=[...map].sort((a,b)=>b[1]-a[1])
+    // 가장 숫자가 많은것을 짝수 인덱스로 채우고 나머지는 홀수 인덱스로 채우면됨
     for(let i=0;i<map.length;i++){
         const [number,cnt]=map[i]
         let c=0
