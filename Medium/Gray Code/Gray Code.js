@@ -33,3 +33,5 @@ function dfs(n,array){
 grayCode(3)
 // grayCode(2)
 // grayCode(1)
+
+Math.pow()
