@@ -7,6 +7,7 @@ var decodeString = function(s) {
     let visited=new Array(s.length).fill(false)
     let number=""
     let newWord=[]
+    // 숫자 파싱
     for(let i=0;i<s.length;i++){
         if(!isNaN(s[i])){
             number+=s[i]

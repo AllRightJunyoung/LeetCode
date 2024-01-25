@@ -1,33 +1,40 @@
 /**
- * @param {number[]} nums
+ * @param {number[]} asteroids
  * @return {number[]}
  */
-var findErrorNums = function(nums) {
-    let map=new Map()
-    let answer=[]
-    for(let i=0;i<nums.length;i++){
-       let number=nums[i]
-       if(!map.has(number)){
-        map.set(number,1)
-       }
-       else{
-        map.set(number,map.get(number)+1)
-       }
-    }
-    for(let i=1;i<=nums.length;i++){
-       if(map.get(i)>1){
-        answer.push(i)
-       } // 중복숫자
-    }
-    for(let i=1;i<=nums.length;i++){
-        if(!map.has(i)){
-         answer.push(i)
-        } // 누락숫자
-     }
-    return answer
-};
 
-findErrorNums([2,2])
-findErrorNums([3,2,2]) // 2,1
-findErrorNums([1,2,2,4]) // 2,3
-findErrorNums([1,1]) // 1,2
+
+var asteroidCollision = function(asteroids) {
+   
+   let stack=[]
+   for(let i=0;i<asteroids.length;i++){
+      stack.push(asteroids[i])
+      while(stack.length>1){
+         let a=stack[stack.length-1]
+         let b=stack[stack.length-2]
+         if((a>0 && b>0)|| (a<0 && b<0))break // 같은 방향
+         if(b<0 && a>0)break // <- -> 다른방향 
+
+         // -> <- 가능
+
+         let c=Math.abs(a)
+         let d=Math.abs(b)
+
+         if(c==d){ // 가중치같으면 둘다 폭발
+            stack.pop()
+            stack.pop()
+         }
+         else{ //아닐경우
+            if(c<d){ // 가장위에꼐 작으면 사라짐
+               stack.pop()
+            }
+            else{ // 가장위에꼐 크면 두번쨰꺼 지움
+               stack.pop()
+               stack.pop()
+               stack.push(a)
+            }
+         }
+         }
+   }
+   return stack
+};
