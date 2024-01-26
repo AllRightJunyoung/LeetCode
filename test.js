@@ -1,34 +1,34 @@
 /**
- * @param {number[]} arr
- * @param {number} k
- * @param {number} x
- * @return {number[]}
+ * @param {number[][]} trips
+ * @param {number} capacity
+ * @return {boolean}
  */
-
-// 정렬된 요소중에 배열에서 x에 가장 가까운 정수 k개를 반환
-var findClosestElements = function(arr, k, x) {
-    let tmp=[]
-    for(let i=0;i<arr.length;i++){
-        let number=arr[i]
-        tmp.push([i,Math.abs(number-x)])
-    }
-
-    tmp.sort((a,b)=>a[1]-b[1])
-    let cnt=0
-    let answer=[]
-    while(cnt!==k){
-        const [idx,n]=tmp[cnt]
-        answer.push(arr[idx])
-        cnt+=1
-    }
-
-    answer=[...answer].sort((a,b)=>a-b)
- 
-    return answer
+var carPooling = function(trips, capacity) {
     
+    let prefixSum=new Array(1002).fill(0)
+    let maxEnd=-Infinity
+    trips.sort((a,b)=>a[2]-b[2])
+    for(let i=0;i<trips.length;i++){
+        const [people,start,end]=trips[i]
+        prefixSum[start]+=people
+        prefixSum[end]-=people
+        maxEnd=Math.max(maxEnd,end)
+    }
+
+    
+    for(let time=1;time<=maxEnd;time++){
+        prefixSum[time]=prefixSum[time]+prefixSum[time-1]
+    }
+    for(let i=0;i<=maxEnd;i++){
+        if(prefixSum[i]>capacity){
+            return false
+        }
+    }
+    return true
+ 
 };
 
-findClosestElements([0,0,1,2,3,3,4,7,7,8],3,5)
-// findClosestElements([1,1,1,10,10,10],1,9)
-// findClosestElements([1,2,3,4,5],4,3)
-// findClosestElements([1,2,3,4,5],4,-1)
+// carPooling([[7,5,6],[6,7,8],[10,1,6]],16) //false
+// carPooling([[2,1,5],[3,5,7]],3) 
+// console.log(carPooling([[2,1,5],[3,3,7]],4))//false
+console.log(carPooling([[2,1,5],[3,3,7]],5))
