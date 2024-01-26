@@ -27,8 +27,3 @@ var findClosestElements = function(arr, k, x) {
     return answer
     
 };
-
-findClosestElements([0,0,1,2,3,3,4,7,7,8],3,5)
-// findClosestElements([1,1,1,10,10,10],1,9)
-// findClosestElements([1,2,3,4,5],4,3)
-// findClosestElements([1,2,3,4,5],4,-1)
