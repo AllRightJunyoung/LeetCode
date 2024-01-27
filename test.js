@@ -10,8 +10,8 @@ var carPooling = function(trips, capacity) {
     trips.sort((a,b)=>a[2]-b[2])
     for(let i=0;i<trips.length;i++){
         const [people,start,end]=trips[i]
-        prefixSum[start]+=people
-        prefixSum[end]-=people
+        prefixSum[start]+=people // 출발지점에 탑승
+        prefixSum[end]-=people //도착지점에 내림
         maxEnd=Math.max(maxEnd,end)
     }
 
