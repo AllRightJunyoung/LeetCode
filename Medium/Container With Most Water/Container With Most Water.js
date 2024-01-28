@@ -11,11 +11,13 @@ var maxArea = function(height) {
   while(left<right){
     let width=Math.abs(right-left)
     let area;
+    
+    // left+=1하는 이유는 현재 height[left]의 최대 area가 나올수밖에없음
     if(height[left]<height[right]){
         area=width*height[left]
         left+=1
     }
-    else{
+    else{ // right-=1도 마찬가지
         area=width*height[right]
         right-=1
     }
