@@ -23,13 +23,3 @@ var equalSubstring = function(s, t, maxCost) {
 
     return answer
 };
-
-
-
-// equalSubstring("abcd","bcdf",3) //3
-// equalSubstring("abcd","cdef",3) // 1
-// equalSubstring("abcd","acde",0)// 1
-equalSubstring("krrgw","zjxss",19) // 2
-
-equalSubstring("thjdoffka","qhrnlntls",11) //3
-equalSubstring("anryddgaqpjdw","zjhotgdlmadcf",5)
