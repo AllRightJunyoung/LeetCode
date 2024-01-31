@@ -17,7 +17,7 @@ var coinChange = function(coins, amount) {
             let coin=coins[j]
             if(i<=coin)break
         dp[i]=Math.min(dp[i],dp[i-coin]+1)
-        // 현재 amount - 가지고있는 코인 
+        // 현재 amount= 현재 amount-coin +1
         }
     }
     let ans;
