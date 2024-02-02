@@ -15,13 +15,13 @@ var platesBetweenCandles = function(s, queries) {
 
     for(let i=0;i<queries.length;i++){
         const [start,end]=queries[i]
-        // 현재 쿼리의 start와 end와 가까운 양초의 위치를 찾는다.
+        // 양초의 위치를 찾는다.
         const l=lowerBound(candles,0,candles.length,start)
         const r=upperBound(candles,0,candles.length,end)-1
         
         if(l<r){
-            let totalItem=candles[r]-candles[l]+1
-            let candle=r-l+1
+            let totalItem=candles[r]-candles[l]+1 //양초를 포함한 모든 아이템
+            let candle=r-l+1 // 해당 범위에 들어있는 양초 
             answer.push(totalItem-candle)
 
         }
@@ -33,7 +33,7 @@ var platesBetweenCandles = function(s, queries) {
     return answer
 };
 
-// target보다 작거나 같은 원소 위치
+// target보다 작거나 같은 원소 위치를 찾는다
 function lowerBound(array,left,right,target){
     while(left<right){
         const mid=Math.floor((left+right)/2)
@@ -47,7 +47,7 @@ function lowerBound(array,left,right,target){
     return right
 
 }
-// target보다 큰 가장  원소 
+// target보다 큰 원소의 위치를 찾는다.
 function upperBound(array,left,right,target){
     while(left<right){
         let mid=(left+right)/2
@@ -61,6 +61,5 @@ function upperBound(array,left,right,target){
     }
     return right
 }
-
-// platesBetweenCandles("**|**|***|",[[2,5],[5,9]])
+platesBetweenCandles("**|**|***|",[[2,5],[5,9]])
 platesBetweenCandles("***|**|*****|**||**|*",[[1,17],[4,5],[14,17],[5,11],[15,16]])
