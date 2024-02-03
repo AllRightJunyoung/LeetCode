@@ -13,27 +13,28 @@ var platesBetweenCandles = function(s, queries) {
         }
     }
 
+    // 두 양초 사이의 별개수를 구해야함
     for(let i=0;i<queries.length;i++){
         const [start,end]=queries[i]
-        // 양초의 위치를 찾는다.
-        const l=lowerBound(candles,0,candles.length,start)
-        const r=upperBound(candles,0,candles.length,end)-1
-        
-        if(l<r){
-            let totalItem=candles[r]-candles[l]+1 //양초를 포함한 모든 아이템
-            let candle=r-l+1 // 해당 범위에 들어있는 양초 
-            answer.push(totalItem-candle)
-
+        // start보다 크거나 같은 양초의 인덱스를 찾는다 (크거나 같아도 같은범위)
+        let s=lowerBound(candles,0,candles.length,start)
+        // end보다 작거나 같은 양초의 인덱스를 찾는다
+        let e=upperBound(candles,0,candles.length,end)-1
+        if(s<e){
+            const totalAmount=candles[e]-candles[s] // 양초랑 * 포함해서 총길이
+            const totalCanldes=e-s // 양초 개수     
+            answer.push(totalAmount-totalCanldes)
         }
         else{
             answer.push(0)
         }
-
     }
     return answer
+
+
 };
 
-// target보다 작거나 같은 원소 위치를 찾는다
+// target보다 크거나 같은 원소 위치
 function lowerBound(array,left,right,target){
     while(left<right){
         const mid=Math.floor((left+right)/2)
@@ -47,7 +48,7 @@ function lowerBound(array,left,right,target){
     return right
 
 }
-// target보다 큰 원소의 위치를 찾는다.
+// target보다 큰 가장  원소 
 function upperBound(array,left,right,target){
     while(left<right){
         let mid=(left+right)/2
@@ -61,5 +62,7 @@ function upperBound(array,left,right,target){
     }
     return right
 }
+
+
 platesBetweenCandles("**|**|***|",[[2,5],[5,9]])
 platesBetweenCandles("***|**|*****|**||**|*",[[1,17],[4,5],[14,17],[5,11],[15,16]])
