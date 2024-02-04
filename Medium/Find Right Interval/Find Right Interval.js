@@ -43,6 +43,8 @@ function upperBound(array,left,right,targetLeft,targetRight){
     while(left<right){
         let mid=(left+right)/2
         mid=Math.floor(mid)
+
+        // 해당 구간의 시작점이 끝나는 구간보다 작아야하고 , 해당 구간의 끝나는점이 시작점이랑 같거나 같을때 문제 조건만족
         if(targetLeft<array[mid][1] && targetRight<=array[mid][0]){
             right=mid
         }
