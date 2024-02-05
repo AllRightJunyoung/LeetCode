@@ -64,5 +64,3 @@ function upperBound(array,left,right,target){
 }
 
 
-platesBetweenCandles("**|**|***|",[[2,5],[5,9]])
-platesBetweenCandles("***|**|*****|**||**|*",[[1,17],[4,5],[14,17],[5,11],[15,16]])
