@@ -1,43 +1,28 @@
 /**
- * @param {number} numRows
- * @return {number[][]}
+ * @param {number[]} nums
+ * @return {number}
  */
-var generate = function(numRows) {
-    let dp=new Array(32).fill(0)
-    for(let i=0;i<=32;i++){
-        dp[i]=new Array(31).fill(-1)
-    }
-    dp[1][0]=1
-    dp[2][0]=1
-    dp[2][1]=1
+var wiggleMaxLength = function(nums) {
+    let postive=new Array(nums.length).fill(0)
+    let negative=new Array(nums.length).fill(0)
 
-    for(let i=3;i<=numRows;i++){
+
+    postive[0]=1
+    negative[0]=1
+
+    for(let i=1;i<nums.length;i++){
         for(let j=0;j<i;j++){
-            if(j==0){
-                dp[i][0]=dp[i-1][0]
-            }
-            else if(j==i-1){
-                dp[i][j]=dp[i-1][j-1]
-            }
-            else{
-                dp[i][j]=dp[i-1][j]+dp[i-1][j-1]
-            }
+           if(nums[j]<nums[j+1]){ // 양수 
+            postive[j]=Math.max(negative[j]+1,postive[j])
+           }
+           else if(nums[j]>nums[j+1]){
+            negative[j]=Math.max(postive[j]+1,negative[j])
+           }
+        
         }
     }
-    let answer=[]
-    for(let i=1;i<=numRows;i++){
-        let tmp=[]
-        for(let j=0;j<numRows;j++){
-            if(dp[i][j]!==-1){
-                tmp.push(dp[i][j])
-            }
-        }
-        answer.push([...tmp])
-    }
-    return answer
-
+    console.log(postive,negative)
+    
 };
 
-// generate(3)
-generate(5)
-// generate(1)
+wiggleMaxLength([1,17,5,10,13,15,10,5,16,8])
