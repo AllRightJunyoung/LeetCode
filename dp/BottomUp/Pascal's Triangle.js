@@ -15,12 +15,15 @@ var generate = function(numRows) {
 
     for(let i=3;i<=numRows;i++){
         for(let j=0;j<i;j++){
+            // 맨앞 
             if(j==0){
                 dp[i][0]=dp[i-1][0]
             }
+            // 맨끝 
             else if(j==i-1){
                 dp[i][j]=dp[i-1][j-1]
             }
+             
             else{
                 dp[i][j]=dp[i-1][j]+dp[i-1][j-1]
             }
