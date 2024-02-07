@@ -5,6 +5,7 @@
  * @return {number}
  */
 
+// 양수와 음수가 번갈아 나오는 수열
 var wiggleMaxLength = function(nums) {
 
     let postive=1
