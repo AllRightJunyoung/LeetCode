@@ -2,6 +2,8 @@
  * @param {number} numRows
  * @return {number[][]}
  */
+
+// 2차원 배열로 품
 var generate = function(numRows) {
     let dp=new Array(32).fill(0)
     for(let i=0;i<=32;i++){
