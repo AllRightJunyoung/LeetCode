@@ -2,19 +2,19 @@
  * @param {number} n
  * @return {number}
  */
-var numTrees = function(n) {
-  let dp=new Array(21).fill(0)
-  dp[0]=1
+var numSquares = function(n) {
+  let dp=new Array(n+1).fill(Infinity)
+  dp[0]=0
   dp[1]=1
   dp[2]=2
-  for(let i=3;i<=n;i++){
-    let sum=0
-    for(let j=0;j<i;j++){
-        sum+=dp[j]*dp[i-j-1]
+  dp[3]=3
+  for(let i=4;i<=n;i++){
+    for(let j=1;j*j<=i;j++){
+      dp[i]=Math.min(dp[i],dp[i-j*j]+1) // +1 은 제곱수 경우 12 = 3+9(1)
     }
-    dp[i]=sum
   }
   return dp[n]
-
+  
 };
-numTrees(3)
+numSquares(13)
+numSquares(12)
