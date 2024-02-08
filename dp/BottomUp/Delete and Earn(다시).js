@@ -29,7 +29,3 @@ var deleteAndEarn = function(nums) {
     let answer=dp[maxValue]
     return answer
 };
-deleteAndEarn([3,1])
-
-deleteAndEarn([3,4,2])
-// deleteAndEarn([2,2,3,3,3,4])
