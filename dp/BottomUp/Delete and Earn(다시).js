@@ -18,6 +18,8 @@ var deleteAndEarn = function(nums) {
     if(map.has(1)){
         dp[1]=map.get(1)
     }
+    // i 번쨰까지의 최대값 
+    // i-1은 삭제될 값 , i-2까지가능
     for(let i=2;i<=maxValue;i++){
         dp[i]=dp[i-1]
         if(map.has(i)){

@@ -1,35 +1,20 @@
 /**
- * @param {number[]} nums
+ * @param {number} n
  * @return {number}
  */
-var deleteAndEarn = function(nums) {
-    let map=new Map()
-    let maxValue=Math.max(...nums)
-    for(let i=0;i<nums.length;i++){
-        if(!map.has(nums[i])){
-            map.set(nums[i],nums[i])
-        }
-        else{
-            map.set(nums[i],map.get(nums[i])+nums[i])
-        }
-    }  
-    let dp=new Array(maxValue+1).fill(0)
-
-    if(map.has(1)){
-        dp[1]=map.get(1)
+var numTrees = function(n) {
+  let dp=new Array(21).fill(0)
+  dp[0]=1
+  dp[1]=1
+  dp[2]=2
+  for(let i=3;i<=n;i++){
+    let sum=0
+    for(let j=0;j<i;j++){
+        sum+=dp[j]*dp[i-j-1]
     }
-    for(let i=2;i<=maxValue;i++){
-        dp[i]=dp[i-1]
-        if(map.has(i)){
-            dp[i]=Math.max(dp[i],dp[i-2]+map.get(i))        
-        }
-    }
+    dp[i]=sum
+  }
+  return dp[n]
 
-    
-    let answer=dp[maxValue]
-    return answer
 };
-deleteAndEarn([3,1])
-
-deleteAndEarn([3,4,2])
-// deleteAndEarn([2,2,3,3,3,4])
+numTrees(3)
