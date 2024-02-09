@@ -1,20 +1,36 @@
 /**
- * @param {number} n
+ * @param {number[]} days
+ * @param {number[]} costs
  * @return {number}
  */
-var numSquares = function(n) {
-  let dp=new Array(n+1).fill(Infinity)
+var mincostTickets = function(days, costs) {
+  let dp=new Array(366).fill(Infinity)
+  let maxDay=Math.max(...days)
   dp[0]=0
-  dp[1]=1
-  dp[2]=2
-  dp[3]=3
-  for(let i=4;i<=n;i++){
-    for(let j=1;j*j<=i;j++){
-      dp[i]=Math.min(dp[i],dp[i-j*j]+1) // +1 은 제곱수 경우 12 = 3+9(1)
+
+  for(let i=0;i<days.length;i++){
+    const day=days[i]
+    for(let j=1;j<=day;j++){
+      if(!days.includes(j)){
+        dp[j]=dp[j-1]
+        continue
+      }
+      else{
+        dp[j]=Math.min(dp[j],dp[Math.max(0,j-1)]+costs[0])
+        dp[j]=Math.min(dp[j],dp[Math.max(0,j-7)]+costs[1])
+        dp[j]=Math.min(dp[j],dp[Math.max(0,j-30)]+costs[2])
+      }
     }
   }
-  return dp[n]
-  
+  let answer=dp[maxDay]
+  return answer
+
+
 };
-numSquares(13)
-numSquares(12)
+
+// mincostTickets([1,2,3,4,5,6,7,8,9,10,30,31],[2,7,15]) //17
+mincostTickets([1,4,6,7,8,20],[2,7,15]) //11
+
+// mincostTickets([1,4,6,7,8,20],[7,2,15]) //6
+
+mincostTickets([1,5,8,9,10,12,13,16,17,18,19,20,23,24,29], [3,12,54]) //39
