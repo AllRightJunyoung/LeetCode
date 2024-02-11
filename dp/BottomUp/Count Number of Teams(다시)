@@ -12,8 +12,8 @@ var numTeams = function(rating) {
                 up[i]+=1 // 현재 숫자보다 작은거 
                 count+=up[j]
             }
-            if(rating[i]<rating[j]){
-                down[i]+=1
+            if(rating[i]<rating[j]){ 
+                down[i]+=1 //현재 숫자보다 큰거
                 count+=down[j]
             }
         }
