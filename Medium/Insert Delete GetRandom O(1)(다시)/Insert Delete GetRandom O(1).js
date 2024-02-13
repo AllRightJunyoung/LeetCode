@@ -49,18 +49,3 @@ RandomizedSet.prototype.getRandom = function() {
     const idx=Math.floor(Math.random()*this.array.length)
     return this.array[idx]    
 };
-
-// Your RandomizedSet object will be instantiated and called as such:
-var obj = new RandomizedSet()
-// obj.remove(0)
-// obj.remove(0)
-obj.insert(1)
-obj.remove(2)
-obj.insert(2)
-obj.getRandom()
-obj.remove(1)
-obj.insert(2)
-obj.getRandom()
-// obj.remove(0)
-// obj.
-// console.log(param_3)
