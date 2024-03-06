@@ -10,6 +10,9 @@
  * @param {number} n
  * @return {ListNode}
  */
+
+// 끝에서부터 n번째 노드를 없앤다
+// 새로운 더미노드를 헤드로 지정후 탐색
 var removeNthFromEnd = function(head, n) {
     let newNode=new ListNode()
     newNode.next=head
