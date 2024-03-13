@@ -1,32 +1,23 @@
 /**
- * @param {string} order
- * @param {string} s
- * @return {string}
+ * @param {number} n
+ * @return {number}
  */
-var customSortString = function(order, s) {
-    let rank=new Map()
-    for(let i=0;i<order.length;i++){
-        rank.set(order[i],i+1)
+var pivotInteger = function(n) {
+  const prefixSum=new Array(n+1).fill(0)
+  prefixSum[1]=1
+  for(let i=2;i<=n;i++){
+    prefixSum[i]=prefixSum[i-1]+i
+  }
+  let answer=-1
+  for(let i=1;i<=n;i++){
+    if(prefixSum[n]-prefixSum[i-1]===prefixSum[i]){
+        answer=i
     }
-    let list=[]
-    for(let i=0;i<s.length;i++){
-        let str=s[i]
-        if(rank.has(str)){
-            list.push([str,rank.get(str)])
-        }
-        else{
-            list.push([str,Infinity])
-        }
-    }
+  }
+  return answer
 
-    list.sort((a,b)=>a[1]-b[1])
-    let answer=""
-    for(let i=0;i<list.length;i++){
-        answer+=list[i][0]
-    } 
-    return answer
 };
 
-customSortString("cba","abcd")
-
-customSortString("bcafg","abcd")
+pivotInteger(8)
+pivotInteger(1)
+pivotInteger(4)
