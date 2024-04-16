@@ -1,23 +1,20 @@
 /**
- * @param {number} n
+ * @param {number[]} nums
+ * @param {number} goal
  * @return {number}
  */
-var pivotInteger = function(n) {
-  const prefixSum=new Array(n+1).fill(0)
-  prefixSum[1]=1
-  for(let i=2;i<=n;i++){
-    prefixSum[i]=prefixSum[i-1]+i
-  }
-  let answer=-1
-  for(let i=1;i<=n;i++){
-    if(prefixSum[n]-prefixSum[i-1]===prefixSum[i]){
-        answer=i
+var numSubarraysWithSum = function(nums, goal) {
+    let result = 0;
+    let prefixSum = 0;
+    const map = new Map();
+    map.set(0, 1);
+    for (const num of nums) {
+        prefixSum += num;
+        result += map.get(prefixSum - goal) || 0;
+        map.set(prefixSum, (map.get(prefixSum) || 0) + 1);
     }
-  }
-  return answer
-
+    return result;
 };
 
-pivotInteger(8)
-pivotInteger(1)
-pivotInteger(4)
+numSubarraysWithSum([1,0,1,0,1],2)
+numSubarraysWithSum([0,0,0,0,0,0],0)
