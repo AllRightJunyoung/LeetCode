@@ -11,6 +11,9 @@
  * @param {number} k
  * @return {number[]}
  */
+// 1.dfs로 모든 노드를 탐방하면서 무방향 그래프를 만든다.
+// 2. target 노드 부터 bfs를 돌려서 가중치를 구함
+// 3. 가중치가 k인 노드가 답
 var distanceK = function(root, target, k) {
     let graph=new Array(501).fill(0)
     for(let i=0;i<501;i++){
