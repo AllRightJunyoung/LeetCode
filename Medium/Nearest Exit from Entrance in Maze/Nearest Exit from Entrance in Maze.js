@@ -7,7 +7,7 @@ const dx = [-1, 1, 0, 0];
 const dy = [0, 0, -1, 1];
 
 var nearestExit = function(maze, entrance) {
-    // 밖으로 나갈수있는 좌표를 찾는다
+    // 밖으로 나갈수있는 좌표를 저장
     let exit_list=[]
     for(let i=0;i<maze.length;i++){
         for(let j=0;j<maze[i].length;j++){
@@ -40,7 +40,7 @@ var nearestExit = function(maze, entrance) {
     let answer=Infinity
     for(let i=0;i<exit_list.length;i++){
         const [x,y]=exit_list[i]
-        if(x===entrance[0] && y===entrance[1])continue
+        if(x===entrance[0] && y===entrance[1])continue // 입구좌표제외
         if(dist[x][y]!==-1){
             answer=Math.min(dist[x][y],answer)
         }
